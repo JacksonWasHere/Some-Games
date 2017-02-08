@@ -38,22 +38,22 @@ window.onload=function() {
   setInterval(update,1000/10);
 }
 function checkKeyPressed(e) {
-  if (e.keyCode=="83" && piece[0].yv != -1 && press) {
+  if (e.keyCode=="83" || e.keyCode=="40" && piece[0].yv != -1 && press) {
     piece[0].xv = 0;
     piece[0].yv = 1;
     press = false;
   }
-  if (e.keyCode=="87" && piece[0].yv != 1 && press) {
+  if (e.keyCode=="87" || e.keyCode=="38" && piece[0].yv != 1 && press) {
     piece[0].xv = 0;
     piece[0].yv = -1;
     press = false;
   }
-  if (e.keyCode=="68" && piece[0].xv != -1 && press) {
+  if (e.keyCode=="68" || e.keyCode=="39" && piece[0].xv != -1 && press) {
     piece[0].xv = 1;
     piece[0].yv = 0;
     press = false;
   }
-  if (e.keyCode=="65" && piece[0].xv != 1 && press) {
+  if (e.keyCode=="65" || e.keyCode=="37" && piece[0].xv != 1 && press) {
     piece[0].xv = -1;
     piece[0].yv = 0;
     press = false;
