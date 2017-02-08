@@ -1,7 +1,3 @@
-/*
-Here is my recreation of the snake game. Use the WASD keys to control the snake.
-*/
-
 class Snake {
   constructor(x,y,xv,yv) {
     this.x=x;
@@ -13,8 +9,8 @@ class Snake {
     cc.strokeStyle="#444444";
     cc.lineWidth=1;
     cc.fillStyle="#ffffff";
-    cc.strokeRect(this.x*15,this.y*15,15,15);
-    cc.fillRect(this.x*15,this.y*15,15,15);
+    cc.strokeRect(this.x*scale,this.y*scale,scale,scale);
+    cc.fillRect(this.x*scale,this.y*scale,scale,scale);
   }
   move() {
     this.x += this.xv;
@@ -22,7 +18,6 @@ class Snake {
   }
 }
 var piece = [];
-var k = 0;
 
 var press = true;
 var play = false;
@@ -32,6 +27,9 @@ var foodx;
 var foody;
 
 var score = 1;
+var highscore = 1;
+
+var scale = 15;
 
 window.onload=function() {
   c=document.getElementById("canvas");
@@ -94,16 +92,26 @@ function update() {
       if (piece[0].x == piece[i].x && piece[0].y == piece[i].y) {
         piece[0]= new Snake(1,1,1,0);
         piece.length=1;
-        confirm("You Died!");
+        alert("You Died!");
         play = false;
+	if(score>highscore)
+	{
+	  highscore=score;
+	  alert("You got a new highscore of: "+highscore+"!");
+	}
         score = 1;
       }
     }
-    if (piece[0].x >= 43 || piece[0].x < 0 || piece[0].y >= 28 || piece[0].y < 0) {
+    if (piece[0].x >= (c.width/scale) || piece[0].x < 0 || piece[0].y >= (c.height/scale) || piece[0].y < 0) {
       piece[0]= new Snake(1,1,1,0);
       piece.length=1;
-      confirm("You Died!");
+      alert("You Died!");
       play = false;
+	if(score>highscore)
+	{
+	  highscore=score;
+	  alert("You got a new highscore of: "+highscore+"!");
+	}
       score = 1;
     }
     window.addEventListener("keyup", keyRelease, false);
@@ -112,21 +120,22 @@ function update() {
     piece[0].draw();
     if(noFood)
     {
-      makeFood()
+      makeFood();
       noFood=false;
     }
     drawFood()
   }
   document.getElementById("scoreLabel").innerHTML = "Your score is: "+score;
+  document.getElementById("highLabel").innerHTML = "Your Highscorescore is: "+highscore;
 }
 function makeFood() {
-  foody = (Math.random()*28 | 0);
-  foodx = (Math.random()*43 | 0);
+  foody = (Math.random()*(c.height/scale) | 0);
+  foodx = (Math.random()*(c.width/scale) | 0);
 }
 function drawFood() {
   cc.strokeStyle="#444444";
   cc.lineWidth=1;
   cc.fillStyle="#990000";
-  cc.strokeRect(foodx*15,foody*15,15,15);
-  cc.fillRect(foodx*15,foody*15,15,15);
+  cc.strokeRect(foodx*scale,foody*scale,scale,scale);
+  cc.fillRect(foodx*scale,foody*scale,scale,scale);
 }
