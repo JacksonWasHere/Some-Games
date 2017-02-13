@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game Of Life</title>
+  </head>
+  <body>
+    <center>
+      <script type="text/javascript" src="life.js"></script>
+      <canvas id="canvas" width="640" height="420"></canvas><br>
+      <button type="button" id="playbtn" onclick="pause();" style="margin-bottom: 10px;">Play</button>
+      <input type="button" id="clearbtn" value="Clear" onclick="clear();"><br><!-- Currently doesn't work. I have no idea why. -->
+      Change the Frames Per Second:
+      <input type="text" id="speedBox" value="5">
+      <input type="button" id="submitSpeed" value="Change Speed" onclick="changeSpeed();">
+    </center>
+  </body>
+</html>
