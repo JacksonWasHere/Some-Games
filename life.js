@@ -23,6 +23,7 @@ window.onload=function() {
     }
   }
   grid[4][15]=true;
+  grid[4][16]=true;
   grid[5][15]=true;
   grid[5][16]=true;
   grid[14][15]=true;
