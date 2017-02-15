@@ -145,7 +145,7 @@ function draw() {
     }
   }
 }
-function clear() {
+function removeAll() {
   if(!play) {
     for (var x = 0; x < grid.length; x++) {
       for (var y = 0; y < grid[x].length; y++) {
