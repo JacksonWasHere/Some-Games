@@ -23,7 +23,14 @@ function init() {
     }
   }
 }
+function speedChange() {
+  speed = document.getElementById("speedBar").value;
+  clearInterval(inter);
+  inter = setInterval(update, 1000/speed);
+  console.log(speed);
+}
 function update() {
+  //console.log(speed);
   if(grid[ax][ay]){
     move(0);
   } else {
