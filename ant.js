@@ -1,6 +1,6 @@
 var grid = [];
-var ax = 32;
-var ay = 21;
+var ax = 36;
+var ay = 32;
 var lastax = ax;
 var lastay = ay;
 var scale = 10;
@@ -28,7 +28,6 @@ function update() {
   }
   lastay=ay;
   lastax=ax;
-  draw();
 }
 function move (thang) {
   if (thang==0) {
@@ -58,21 +57,15 @@ function swap() {
   } else {
     grid[lastax][lastay]=true;
   }
+  draw()
 }
 function draw() {
-  for (var x = 0; x < grid.length; x++) {
-    for (var y = 0; y < grid[x].length; y++) {
-      if (grid[x][y]) {
-        cc.fillStyle="#633D17"
-      } else {
-        cc.fillStyle="#947422";
-      }
-      cc.strokeStyle="#333333";
-      cc.strokeWeight=1;
-      cc.strokeRect(x*scale,y*scale,scale,scale);
-      cc.fillRect(x*scale,y*scale,scale,scale);
-    }
+  if(grid[lastax][lastay]){
+    cc.fillStyle="#594918";
+  } else {
+    cc.fillStyle="#947422";
   }
+  cc.fillRect(lastax*scale,lastay*scale,scale,scale);
   cc.fillStyle="#DF2A2A";
   cc.fillRect((ax+.5)*scale,(ay+.5)*scale,scale/2,scale/2);
 }
