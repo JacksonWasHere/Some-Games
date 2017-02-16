@@ -1,7 +1,7 @@
 var play = false;
 //speed of
 var speed = 5;
-var scale = 10;
+var scale = 5;
 //the grid
 var grid = [];
 //buffer to test everything;
@@ -100,6 +100,11 @@ function update() {
   }
   }
 }
+function step() {
+  play=true;
+  update();
+  play=false;
+}
 var press = true;
 function edit() {
   if(!play) {
@@ -157,13 +162,13 @@ function removeAll() {
   console.log("Cleared");
 }
 function changeSpeed() {
-  if(!play) {
+  //if(!play) {
     console.log(document.getElementById("speedBox").value);
     speed=document.getElementById("speedBox").value;
     console.log(speed);
     clearInterval(runGame);
     runGame = setInterval(update, 1000/speed);
-  }
+  //}
 }
 function pause() {
   if (play) {
